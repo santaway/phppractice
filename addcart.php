@@ -1,0 +1,12 @@
+<?php
+	$id=$_GET['id'];
+	if(isset($_COOKIE['basket'])){
+	$arc=unserialize($_COOKIE['basket']);
+	}else{
+		$arc=array();
+	}
+	$arc[$id]=1;
+	$str=serialize($arc);
+	setcookie('basket',$str,time()+60*60*2,'/');
+	header('localhost:cabinet.php');
+?>
